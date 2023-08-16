@@ -2,7 +2,7 @@
     "name": "geeksesi/blog",
     "autoload": {
         "psr-4": {
-            "Geeksesi\\Blog\\": "src/"
+            "App\\": "app/"
         }
     },
     "authors": [
