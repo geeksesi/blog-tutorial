@@ -1,0 +1,15 @@
+{
+    "name": "geeksesi/blog",
+    "autoload": {
+        "psr-4": {
+            "Geeksesi\\Blog\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mohammad Javad Ghasemy",
+            "email": "geeksesi@gmail.com"
+        }
+    ],
+    "require": {}
+}
