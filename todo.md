@@ -1,0 +1,12 @@
+-   [ ] dashboard
+-   [ ] login and register
+-   [ ] user
+-   [ ] main page with posts
+-   [ ] categories of website
+-   [ ] posts could have categories
+-   [ ] posts can have tags
+-   [ ] route by post slug
+-   [ ] route by categories slug
+-   [ ] route by tags
+-   [ ] dashboard create a post ( we should to show existing categories and lets pick some of them)
+-   [ ] you are free to make some tags
