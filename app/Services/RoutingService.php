@@ -32,7 +32,8 @@ class RoutingService
         try {
             return (new $controller())(...$parameters);
         } catch (\Throwable $th) {
-            echo "SERVER ERROR";
+            echo "SERVER ERROR <br/>";
+            echo $th->getMessage();
             return; // 500 
         }
     }
