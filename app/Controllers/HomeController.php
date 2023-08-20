@@ -2,11 +2,15 @@
 
 namespace App\Controllers;
 
+use App\Models\PostModel;
+use App\Views\View;
 
 class HomeController
 {
     public function __invoke()
     {
-        echo "HI IT's HOME PAGE";
+        $posts = PostModel::getAll();
+
+        return View::mainPage($posts);
     }
 }
