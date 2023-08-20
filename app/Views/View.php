@@ -16,4 +16,9 @@ class View
     {
         include __DIR__ . "/template/post.php";
     }
+
+    public static function adminIndexPage()
+    {
+        include __DIR__ . "/template/admin/index.php";
+    }
 }
