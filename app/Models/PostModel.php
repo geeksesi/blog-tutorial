@@ -21,12 +21,26 @@ final class PostModel extends BaseModel
         $table = static::$table;
         $db = self::connection();
 
-        $query = $db->prepare("SELECT * from {$table}");
+        $query = $db->prepare("SELECT * from {$table} ");
 
         if (!$query->execute()) {
             return false;
         }
         return $query->fetchAll(PDO::FETCH_CLASS, static::class);
+    }
+
+    public static function getBySlug($slug): self
+    {
+        $table = static::$table;
+        $db = self::connection();
+
+        $query = $db->prepare("SELECT * from {$table} WHERE slug=:slug LIMIT 1");
+
+        if (!$query->execute([":slug" => $slug])) {
+            return false;
+        }
+        $query->setFetchMode(PDO::FETCH_CLASS, static::class);
+        return $query->fetch(PDO::FETCH_CLASS);
     }
 
     public function createdAtHumanFormat(): string
@@ -35,17 +49,18 @@ final class PostModel extends BaseModel
         return $date->format('dS F, Y');
     }
 
-    public function summery(): string
+    public function summery($length = 150): string
     {
-        if (strlen($input) <= $length)
-            return $input;
-
-        $parts = explode(" ", $input);
+        $text = $this->body;
+        if (strlen($text) <= $length) {
+            return $text;
+        }
+        $parts = explode(" ", $text);
 
         while (strlen(implode(" ", $parts)) > $length)
             array_pop($parts);
 
-        return sprintf("%s...", $summery);
+        return sprintf("%s...", implode(" ", $parts));
     }
 
     public function url(): string
