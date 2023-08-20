@@ -96,7 +96,7 @@
                     <!-- Article Image -->
                     <?php if (!empty($post->thumbnail)) : ?>
                         <a href="<?= $post->url() ?>" class="hover:opacity-75">
-                            <img src="">
+                            <img src="<?= $post->thumbnail ?>">
                         </a>
                     <?php endif; ?>
                     <div class="bg-white flex flex-col justify-start p-6">
