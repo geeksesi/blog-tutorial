@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Admin;
 
 use App\Models\PostModel;
 use App\Views\View;
 
-class AdminController
+class DashboardController
 {
-    public function __invoke()
+    public function index()
     {
         $posts = PostModel::getAll();
 
