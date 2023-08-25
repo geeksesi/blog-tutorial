@@ -5,8 +5,16 @@
 -   [ ] categories of website
 -   [ ] posts could have categories
 -   [ ] posts can have tags
--   [ ] route by post slug
+-   [x] route by post slug
 -   [ ] route by categories slug
 -   [ ] route by tags
 -   [ ] dashboard create a post ( we should to show existing categories and lets pick some of them)
 -   [ ] you are free to make some tags
+
+-   /admin/{MODEL} -> index (GET)
+-   /admin/{MODEL}/{id} -> show (GET)
+-   /admin/{MODEL}/create -> create (GET)
+-   /admin/{MODEL}/edit/{id} -> edit (GET)
+-   /admin/{MODEL} -> store ({POST})
+-   /admin/{MODEL}/{id} -> update ({POST})
+-   /admin/{MODEL}/{id} -> delete (DELETE)
