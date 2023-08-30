@@ -8,7 +8,7 @@
         <article class="flex flex-col shadow my-4 w-full">
             <!-- Article Image -->
             <?php if (!empty($post->thumbnail)) : ?>
-                <img class="hover:opacity-75" src="<?= $post->thumbnail ?>">
+                <img class="hover:opacity-75" src="<?= $post->getThumbnailUrl() ?>">
             <?php endif; ?>
             <div class="bg-white flex flex-col justify-start p-6">
                 <a class="text-blue-700 text-sm font-bold uppercase pb-4">Technology</a> <!-- @todo implement category -->

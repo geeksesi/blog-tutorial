@@ -67,4 +67,9 @@ final class PostModel extends BaseModel
     {
         return sprintf("/post/%s", $this->slug);
     }
+
+    public function getThumbnailUrl(): string
+    {
+        return str_replace(BASE_FOLDER, "", $this->thumbnail);
+    }
 }

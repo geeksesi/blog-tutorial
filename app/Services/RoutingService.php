@@ -9,15 +9,15 @@ class RoutingService
     {
         if ($action == 'create') return 'create';
         if ($action == 'edit') return 'edit';
+        if ($action == 'delete') return 'delete';
         if (empty($action) && $requestType === 'GET') return 'index';
         if (empty($action) && $requestType === 'POST') return 'store';
         if (!empty($action) && $requestType === 'GET') return 'show';
-        if (!empty($action) && $requestType === 'POST') return 'update';
-        if (!empty($action) && $requestType === 'DELETE') return 'delete';
+        if ($action == 'update' && $requestType === 'POST') return 'update';
         return '';
     }
 
-    protected function adminControllerName($path, $urlPath): array
+    protected function adminControllerName($path, $urlPath): array|false
     {
         if ($path != 'admin') {
             return false;
@@ -50,6 +50,16 @@ class RoutingService
         return $paths;
     }
 
+    protected function getAdminUrlParameters(): array
+    {
+        $urlPath = trim($_SERVER["REQUEST_URI"], '/');
+        $paths = explode("/", $urlPath);
+        unset($paths[0]);
+        unset($paths[1]);
+        unset($paths[2]);
+        return $paths;
+    }
+
     public function execute()
     {
         $controller = $this->controllerName();
@@ -70,6 +80,8 @@ class RoutingService
         }
     }
 
+
+
     public function executeAdmin(array $callable)
     {
         list($className, $methodName) = $callable;
@@ -77,7 +89,7 @@ class RoutingService
             echo "NOT FOUND";
             return; // 404 page not found
         }
-        $parameters = $this->getUrlParameters();
+        $parameters = $this->getAdminUrlParameters();
         try {
             return (new $className())->$methodName(...$parameters);
         } catch (\Throwable $th) {
